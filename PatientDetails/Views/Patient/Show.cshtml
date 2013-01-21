@@ -1,0 +1,64 @@
+﻿@model PatientDetails.ViewModel.Patientviewmodel
+@{
+    ViewBag.Title = "Show";
+}
+
+    @{
+      @TempData["ErrorMessage"]
+    }
+
+ <h1> Welcome To E-mds Patient Portal </h1>
+
+<html>
+<head>
+    <script type="text/javascript" src="../../Scripts/prototype.js"></script>
+    <script src="../../Scripts/JScript1.js" type="text/javascript"></script>
+   
+</head>
+    <body>
+        @Html.ActionLink("New Patient", "New")
+        
+        <script type="text/javascript">
+       
+            function Application_init() {
+                var test = new test_Helper();
+            }
+
+            Event.observe(window, "load", Application_init);
+
+        
+        
+        
+        
+        </script>
+        <table id="tab" border="1" width="70%" >
+            <tr>
+                <td colspan="5">
+                    @foreach (var item in Model.Patients)
+                    {
+                    
+                        <div class="patientName" id=@item.Id style="font-size: larger;color: darkred">
+                            @item.Name
+                        </div>
+                            <span class="PatientEdit" id=@item.Id>Edit</span>
+                            <span class="patientDelete" id=@item.Id>Delete</span>
+                      
+              }
+                </td>
+                <td colspan="5"  >
+                    <div id="Partialview" style="font-size: medium;color: blueviolet">
+                        @{Html.RenderPartial("PatientDetails", Model);} 
+                    </div>
+                    <td colspan="5"  >
+                        <div id="PatientEdit" style="font-size: medium;color: blueviolet">
+                            @* @{Html.RenderPartial("EditPatient",Model);} *@
+                        </div>
+                        <td colspan="5"  >
+                    <div id="PatientDelete" style="font-size: medium;color: blueviolet">
+                       @* @{Html.RenderPartial("EditPatient",Model);} *@
+                    </div>
+                </td>
+               </tr>
+        </table>
+    </body>
+</html>
